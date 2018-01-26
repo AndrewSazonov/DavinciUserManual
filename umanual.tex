@@ -1,0 +1,52 @@
+\documentclass{book}
+
+% General document formatting
+\usepackage[margin=2cm]{geometry}
+\usepackage[parfill]{parskip}
+\usepackage[utf8]{inputenc}
+    
+% Related to math
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+
+% Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={My title},    % title
+    pdfauthor={Author},     % author
+    pdfsubject={Subject},   % subject of the document
+    pdfcreator={Creator},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=blue,         % color of internal links (change box color with linkbordercolor)
+    citecolor=blue,         % color of links to bibliography
+    filecolor=blue,         % color of file links
+    urlcolor=blue,          % color of external links
+}
+
+% TOC settings
+%\setcounter{tocdepth}{1} % Show sections
+%\setcounter{tocdepth}{2} % + subsections
+%\setcounter{tocdepth}{3} % + subsubsections
+%\setcounter{tocdepth}{4} % + paragraphs
+%\setcounter{tocdepth}{5} % + subparagraphs
+
+% Begin
+\begin{document}
+
+% Create table-of-content
+\tableofcontents
+
+% Input chapters from separate files
+\input{umanual_intro}
+\input{umanual_start}
+\input{umanual_use}
+
+% End
+\end{document}
