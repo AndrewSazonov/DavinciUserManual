@@ -202,7 +202,7 @@ The \texttab{Settings} tab of the \texttab{Output Table} allows to:
 \end{itemize}
 
 \newpage
-The output table contains all the available parameters. The list of parameters depends on the type of input data. The full list is given below. If the polarized neutron diffraction data are used, additional (+) or (-) suffixes to the parameter names are added, which correspond to two opposite directions of neutron polarisation.
+The output table contains all the available parameters. The list of parameters depends on the type of input data. The full list is given below. If the polarized neutron diffraction data are used, additional (+) or (-) suffixes to the parameter names are added, which correspond to two opposite directions of neutron polarisation: spin up and spin down, respectively.
  
 \begin{itemize}
 	\item \textbf{Excluded}: 1 if peak is excluded or 0 otherwise.
@@ -214,8 +214,8 @@ The output table contains all the available parameters. The list of parameters d
 	\item \textbf{AreaNorm, AreaNormErr}: Peak area normalized by the monitor and its standard deviation.
 	\item \textbf{BkgNorm, BkgNormErr}: Average background normalized by the monitor and its standard deviation.
 	\item \textbf{Fwhm, FwhmErr}: Peak full width at half maximum (FWHM) and its standard deviation.
-	\item \textbf{Sf2, Sf2Err}: Experimental/observed structure factor and its standard deviation.
-	\item \textbf{FR, FRerr}: Experimental/observed flipping ratio and its standard deviation.
+	\item \textbf{Sf2, Sf2Err}: Experimental structure factor and its standard deviation. Sf2 is calculated as AreaNorm corrected for Lorentz effect.
+	\item \textbf{FR, FRerr}: Experimental flipping ratio and its standard deviation. The flipping ratio measured by polarized neutron diffraction is, for each Bragg reflection, the ratio between the intensity diffracted with spin up (+) and the intensity diffracted with spin down (-): $\text{FR} = \text{AreaNorm(+)}/\text{AreaNorm(-)}$.
 	\item \textbf{|FR-1|/FRerr}: Weight of the measured flipping ration calculated as $|\text{FR}-1|/\text{FR}_\text{err}$.
 	\item \textbf{Chi1, Chi2, 2Theta, Gamma, Nu, Omega, Chi, Phi}: Diffractometer angles.
 	\item \textbf{Absolute index}: Absolute index of the scan.
