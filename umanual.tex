@@ -1,12 +1,129 @@
-\documentclass{book}
+\documentclass[12pt,a4paper]{scrreprt}
+%\documentclass[12pt,a4paper,draft,numbers=enddot]{scrreprt}
+\linespread{1.25}
+%\RedeclareSectionCommand[beforeskip=2cm]{chapter}
+\RedeclareSectionCommand[beforeskip=5ex, afterskip=1ex]{section}
+\RedeclareSectionCommand[beforeskip=1ex, afterskip=1ex]{subsubsection}
+% New type of section
+\newcommand\itemsection[1]{\subsubsection*{#1}}
+\newcommand\itemtitle[1]{\textbf{#1}\newline}
+% Add dots after section numbers
+%\usepackage{secdot}
+%\sectiondot{chapter}
+%\sectiondot{section}
+%\sectiondot{subsection}
 
 % General document formatting
-\usepackage[margin=2cm]{geometry}
+\usepackage[margin=2cm,top=1.1cm,bottom=1cm,includeheadfoot]{geometry}
 \usepackage[parfill]{parskip}
 \usepackage[utf8]{inputenc}
     
 % Related to math
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
+
+% Graphics
+\usepackage{graphicx}
+
+% Preventing hyphenation
+%\usepackage[none]{hyphenat}
+
+% Colors
+\usepackage{xcolor}
+\definecolor{bgr}{HTML}{f9f9f9}
+\definecolor{blue}{HTML}{0d8bcf}
+
+% Enumerating, itemizing
+\usepackage{enumitem}
+\setlist[itemize,1]{leftmargin=3ex,topsep=0.0ex,itemsep=0.5ex,label=\textbullet}
+\setlist[itemize,2]{leftmargin=4ex,topsep=1.0ex,itemsep=0.5ex,label=$\circ$}
+
+% Coloured boxes
+\usepackage[most]{tcolorbox}
+\newenvironment{boxitemize}{
+	\begin{itemize}}{\end{itemize}
+	}
+\tcolorboxenvironment{boxitemize}{
+	colback=black!4,
+	colframe=black!20,
+	arc=2pt,
+	boxrule=0.5pt,
+	boxsep=0em,
+	before skip=6pt,
+	after skip=6pt
+	}
+\newtcbox\textmn{
+	before upper=\strut,
+	verbatim,
+	on line,
+	size=small,
+	top=-0.7ex,
+	bottom=-0.7ex,
+	left=0.6ex,
+	right=0.6ex,
+	colframe=black!20,
+	colback=black!4
+	}
+\newtcbox\texttab{
+	before upper=\strut,
+	on line,
+	size=small,
+	top=-0.7ex,
+	bottom=-0.7ex,
+	left=2.0ex,
+	right=2.0ex,
+	arc=0pt,
+	%colframe=blue,
+	%colback=blue,
+	%colupper=white,
+	colframe=black!20,
+	colback=black!4
+	}
+
+\newcommand\image[1]{
+	\tcbincludegraphics[
+		width=\textwidth,
+		top=0ex,
+		bottom=0ex,
+		left=0ex,
+		right=0ex,
+		boxsep=0em,
+		boxrule=0.5pt,
+		arc=2pt,
+		colframe=black!20
+		]
+	{#1}
+	}
+\newcommand\imagenoframe[1]{
+	\tcbincludegraphics[
+		width=\textwidth,
+		top=0ex,
+		bottom=0ex,
+		left=0ex,
+		right=0ex,
+		boxsep=0em,
+		frame hidden,
+		opacityback=0.0
+		]
+	{#1}
+	}
+
+
+% Font: Computer Modern Sans Serif with Sansmathfonts
+%\usepackage{fontawesome}
+\usepackage{sansmathfonts}
+\usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault} % Only if the base font of the document is to be sans serif
+%\usepackage{microtype}
+\usepackage[english]{babel}
+
+
+% Page headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LE,RO]{}%{\rightmark}
+\fancyhead[LO,RE]{\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
+
 
 % Hyperlinks
 \usepackage{hyperref}
@@ -29,6 +146,7 @@
     filecolor=blue,         % color of file links
     urlcolor=blue,          % color of external links
 }
+\urlstyle{sf}
 
 % TOC settings
 %\setcounter{tocdepth}{1} % Show sections
@@ -39,9 +157,15 @@
 
 % Begin
 \begin{document}
+\pagenumbering{roman} % Start roman numbering
+
+% Cover page
+\input{umanual_cover}
 
 % Create table-of-content
 \tableofcontents
+\newpage
+\pagenumbering{arabic} % Switch to normal numbers
 
 % Input chapters from separate files
 \input{umanual_intro}
