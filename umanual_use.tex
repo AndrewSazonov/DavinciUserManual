@@ -205,11 +205,12 @@ The \texttab{Settings} tab of the \texttab{Output Table} allows to:
 The output table contains all the available parameters. The list of parameters depends on the type of input data. The full list is given below. If the polarized neutron diffraction data are used, additional (+) or (-) suffixes to the parameter names are added, which correspond to two opposite directions of neutron polarisation: spin up and spin down, respectively.
  
 \begin{itemize}
+	\item \textbf{Batch}: Batch number (currently is always 1).
 	\item \textbf{Excluded}: 1 if peak is excluded or 0 otherwise.
 	\item \textbf{Scan}: Index of the scan.
 	\item \textbf{H, K, L}: Miller indices ($hkl$)
 	\item \textbf{IntMax, IntMaxErr}: Maximum peak intensity and its standard deviation.
-	\item \textbf{IntSum, IntMaxErr}: Sum of all the peak point intensities (minus respective background intencities) of the given scan and its standard deviation.
+	\item \textbf{IntSum, IntMaxErr}: Sum of all the peak point intensities (minus respective background intensities) of the given scan and its standard deviation.
 	\item \textbf{Area, AreaErr}: Raw peak area and its standard deviation.
 	\item \textbf{AreaNorm, AreaNormErr}: Peak area normalized by the monitor and its standard deviation.
 	\item \textbf{BkgNorm, BkgNormErr}: Average background normalized by the monitor and its standard deviation.
@@ -217,7 +218,8 @@ The output table contains all the available parameters. The list of parameters d
 	\item \textbf{Sf2, Sf2Err}: Experimental structure factor and its standard deviation. \textbf{Sf2} is calculated as \textbf{AreaNorm} corrected for Lorentz effect.
 	\item \textbf{FR, FRerr}: Experimental flipping ratio and its standard deviation. \textbf{FR} is calculated as \textbf{AreaNorm}(+)/\textbf{AreaNorm}(-).
 	\item \textbf{|FR-1|/FRerr}: Weight of the measured flipping ration calculated as |\textbf{FR}-1|/\textbf{FRerr}.
-	\item \textbf{Chi1, Chi2, 2Theta, Gamma, Nu, Omega, Chi, Phi}: Diffractometer angles.
+	\item \textbf{Chi1, Chi2, Theta, 2Theta, Gamma, Nu, Omega, Chi, Phi}: Diffractometer angles.
+	\item \textbf{Psi}: Azimuthal angle.
 	\item \textbf{Absolute index}: Absolute index of the scan.
 	\item \textbf{Date and Time}: Date and time of the measurements.
 	\item \textbf{Points count}: Number of points in the scan.
@@ -234,10 +236,11 @@ The output table contains all the available parameters. The list of parameters d
 The following formats are available for the output table:
 
 \begin{itemize}
-	\item \textbf{General comma-separated (*.csv)}. All the parameters given in the output table including the row headers are saved in the comma-separated text format with file extension \textbf{csv}.
-	\item \textbf{ShelX97 (3i4,2f8.2) (*.hkl)}. The parameters \textbf{H, K, L, Sf2, Sf2Err} are saved as space delimited text using the format (3i4,2f8.2) with file extension \textbf{hkl}.
-	\item \textbf{TBAR (*.tb)}. The parameters \textbf{Scan, H, K, L, Sf2, Sf2Err, 2Theta, Omega, Chi, Phi} are saved as space delimited text using the format (i6,3i4,2f10.2,4f8.2) with file extension \textbf{tb}.
-	\item \textbf{CCSL flipping ratios (*.fli)}. The parameters \textbf{Scan, H, K, L, Omega, Gamma, Nu, FR, FRerr, |FR-1|/FRerr, Temperature, Magnetic field} are saved as space delimited text using the format (4i5,3f8.2,2f10.6,f8.2,f7.1,f5.1) with file extension \textbf{fli}.
+	\item \textbf{General comma-separated, real (*.csv)}. All the parameters given in the output table including the row headers are saved in the comma-separated text format with file extension \textbf{csv}. Miller indices are considered as real (non-integer) values.
+	\item \textbf{ShelX97 with direction cosines, integer (*.hkl)}. The parameters \textbf{H, K, L, Sf2, Sf2Err, Batch} are saved as space delimited text using the format (3i4,2f8.2,i4) with file extension \textbf{hkl}. Miller indices are rounded to the nearest integers.
+	\item \textbf{ShelX97 with direction cosines, real (*.hkl)}. The parameters \textbf{H, K, L, Sf2, Sf2Err, Batch} are saved as space delimited text using the format (3f8.3,2f8.2,i4) with file extension \textbf{hkl}. Miller indices are considered as real (non-integer) values.
+	\item \textbf{TBAR/D9 (*.tb)}. The parameters \textbf{Scan, H, K, L, Sf2, Sf2Err, Theta, Omega, Chi, Phi, Temperature, Psi, Fwhm} are saved as space delimited text using the format\\ (i6,3i4,2f10.2,4f8.2,f10.2,f12.2,f13.4) with file extension \textbf{tb}. Miller indices are rounded to the nearest integers.
+	\item \textbf{CCSL flipping ratios (*.fli)}. The parameters \textbf{Scan, H, K, L, Omega, Gamma, Nu, FR, FRerr, |FR-1|/FRerr, Temperature, Magnetic field} are saved as space delimited text using the format (4i5,3f8.2,2f10.6,f8.2,f7.1,f5.1) with file extension \textbf{fli}.  Miller indices are rounded to the nearest integers.
 \end{itemize}
 
 
